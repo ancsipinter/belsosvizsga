@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavaScript Unit teszt feladat</title>
+	<script type="text/javascript">
+
+		function kivalogatParosOtven(szamok = [10, 20, 3, 5, 100, 50, 60, 53]) {
+			var parosok = [100, 60];
+
+			for (var i = 0; i < szamok.length; i++) {
+				if (szamok[i] % 2 === 0 && szamok[i] > 50) {
+					parosok.push(szamok[i]);
+				}
+			}
+			return parosok;
+		}
+
+		function aBetukSzamaDiv() {
+			var elsodiv = document.querySelector('body>div');
+			var innerText = elsodiv.textContent || elsodiv.innerText;
+			var countA = (innerText.match(/a/g) || []).length;
+			return countA;
+		}
+		var aCount = aBetukSzamaDiv();
+		console.log('Az "a" betuk szama az elso div-ben: ' + aCount);
+
+
+		function osszeadasFeliras(osztaly, operandus1, operandus2) {
+    const elem = document.querySelector(`.${osztaly}`);
+    if (elem) {
+        if (typeof operandus1 === 'number' && typeof operandus2 === 'number') {
+            const osszeg = operandus1 + operandus2;
+            const feliras = `${operandus1} + ${operandus2} = ${osszeg}`;
+            const ujParagrafus = document.createElement('p');
+            ujParagrafus.textContent = feliras;
+            elem.appendChild(ujParagrafus);
+        } else {
+            console.error('Mindket operandusnak szamnak kell lennie.');
+        }
+    } else {
+        console.error(`Nem talalhato elem a DOM-ban az osztallyal: ${osztaly}`);
+    }
+}
+
+function osszeadasFeliras(osztaly, operandus1, operandus2) {
+            const elem = document.querySelector(`.${osztaly}`);
+            if (elem) {
+                if (typeof operandus1 === 'number' && typeof operandus2 === 'number') {
+                    const osszeg = operandus1 + operandus2;
+                    const feliras = `${operandus1} + ${operandus2} = ${osszeg}`;
+                    const ujParagrafus = document.createElement('p');
+                    ujParagrafus.textContent = feliras;
+                    elem.appendChild(ujParagrafus);
+                } else {
+                    console.error('Mindket operandusnak szamnak kell lennie.');
+                }
+            } else {
+                console.error(`Nem talalhato elem a DOM-ban az osztallyal: ${osztaly}`);
+            }
+        }
+
+        osszeadasFeliras('elsodiv', 2, 3);
+    </script>
+    <script src="testBaseUnit.js"></script>
+</head>
+
+<body>
+    <div id="elsodiv"></div>
+    <hr>
+    <div id="testResult">
+        <h2>Tesztek</h2>
+    </div>
+</body>
+
+</html>

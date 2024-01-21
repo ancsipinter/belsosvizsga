@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TypeScript Unit teszt feladat</title>
+	<script src="./vizsga.js">
+
+		function osszesOszto(szam: number): number[] {
+			if (szam <= 0 || !Number.isInteger(szam)) {
+				console.error('A bemenetnek pozitiv egsesz szamnak kell lennie.');
+				return [];
+			}
+			const osztok: number[] = [];
+			for (let i = 1; i <= szam; i++) {
+				if (szam % i === 0) {
+					osztok.push(i);
+				}
+			}
+			return osztok;
+		}
+
+		function parosDarab(szamTomb: number[]): number {
+			const parosSzamokDarabja = szamTomb.filter(szam => szam % 2 === 0).lenght;
+			return parosSzamokDarabja;
+		}
+		const inputTomb: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+		const parosDarab = ParosDarab(inputTomb);
+		console.log('A páros számok darabszáma a tömbben:', parosDarab);
+
+		function fuggvenyhivasPalindrom(eredmenySzoveg: () => string): boolean {
+			const eredmeny = eredmenySzoveg().toLowerCase().replace(/\s/g, '');
+			const forditottEredmeny = eredmeny.split('').reverse()join('');
+			return eredmeny === forditottEredmeny;
+		}
+		const palindromEredmeny = fuggvenyhivasPalindrom(() => "indul a gorog aludni");
+		console.log('A szoveg palindrom?', palindromEredmeny);
+	</script>
+	<script src="testBaseTSUnit.js"></script>
+
+
+<body>
+	<div></div>
+	<hr>
+	<div id="testResult">
+		<h2>Tesztek</h2>
+	</div>
+</body>
+
+</html>
